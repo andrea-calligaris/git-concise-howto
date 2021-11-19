@@ -12,6 +12,6 @@
 <br/><br/>
 [Commit & push](commit_and_push.md)
 <br/>
-[I messed up!](i_messed_up!.md)
+[I messed up!](i_messed_up.md)
 <br/><br/>
 [More commands and info](more_commands_and_info.md)
