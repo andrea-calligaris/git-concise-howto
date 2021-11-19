@@ -55,6 +55,6 @@ For now just rename it:
 
 `git branch -m master main`
 
-You can now [commit & push](commit_and_push.md) your work.
+Now your project has version control. You can continue the development and [commit & push](commit_and_push.md) your changes.
 
 <p align="center"><a href="index.md">INDEX</a></p>
