@@ -1,6 +1,6 @@
 <p align="center"><a href="index.md">INDEX</a></p>
 
-# Credentials
+# Credentials and privacy
 
 ## Email privacy
 The best thing that you can do for email privacy / spam control is to have a different real email address to use with _GitHub_ and related services, preferably with email forwarding to your other email address(es), and use this email address to sign up to _GitHub_ and to push commits with _Git_.
