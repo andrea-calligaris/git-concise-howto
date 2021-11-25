@@ -128,6 +128,56 @@ Revert everything:
 
 See [I want to reset the changes and I have not committed yet](#i-want-to-reset-the-changes-and-i-have-not-committed-yet).
 
+## `git status` lists files in "Changes not staged for commit", even though I did an hard reset
+
+It could be a problem about permissions. Do:
+
+`git diff`
+
+If the output is something like:
+
+```
+diff --git a/src/main.cpp b/src/main.cpp
+old mode 100644
+new mode 100755
+```
+
+this means that the file in your hard disk has a different permission (_mode_) than what's in the repository.
+
+This may happen for example when moving a Git repository across different hard drives / partitions, or when moving it across _Windows_ and _Linux_.
+
+First of all, notice that Git **only tracks whether a file is executable or not**, not the full set of _*nix_ permissions. So for Git to recognize a change, you can only do `+x` or `-x`.
+
+Anyway:
+
+### Fixing the problem: Option A: ignore permissions
+
+You can make Git ignore the executable bit by doing:
+
+`git config core.filemode false`
+
+That will solve the problem; however, if you do want some files to have executable permissions and you want to save this information on the online repository, you don't want to do that; in this case what you need to do to solve the issue is to change the permissions of the files in your hard drive to match the online repository again:
+
+### Fixing the problem: Option B: match permissions to the online repository
+
+Remove the executable bit from all files:
+
+`sudo chmod -R -x .`
+
+This will also revoke your ability to list the directories, so fix it:
+
+`sudo chmod -R +X .`
+
+Now, if you do have any files you want to keep executable, such as _.sh_ scripts, you'll need to revert those. For each of those files do:
+
+`chmod +x ./compile.sh`
+
+### If you're using a shared folder in _VirtualBox_
+
+Do not mount the shared folder automatically, because it will mount it with different and unchangeable permissions. In the machine options, give a name to the folder (in this example `shared_folder_name`), uncheck _Automatic mount_, and do not specify a mount point. Then, edit your _/etc/fstab_:
+
+`shared_folder_name /mnt/existing_folder vboxsf rw,uid=1000,gid=1000,nosuid,nodev,nofail 0 0`
+
 ## I can't switch branches, it says: "Commit your changes or stash them before you can merge"
 
 * Option 1: commit the changes.
