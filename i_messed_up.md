@@ -58,7 +58,7 @@ Finally, [force a push](#force-a-push).
 
 `git push --force-with-lease`
 
-_--force-with-lease_ stops the command if there are other other commits ahead of you. If that happens, you have no other option that to [make a new commit which reverts back to previous code](#revert-a-commit-by-making-a-new-one-which-goes-back-to-previous-code).
+_--force-with-lease_ stops the command if there are other other commits ahead of you. If that happens, you have no other option than to [make a new commit which reverts back to previous code](#revert-a-commit-by-making-a-new-one-which-goes-back-to-previous-code).
 
 The _--force_ option instead is the aggressive one, which overwrites any eventual work on the remote branch. Don't use this in a **public** repository: "rewriting history" is very bad practice; if you do, people who have already cloned your repository would have to be informed of this forced push and they'll have to manually fix their local history e.g. with `git pull --rebase`; instead [make a new commit which reverts back to previous code](#revert-a-commit-by-making-a-new-one-which-goes-back-to-previous-code).
 
