@@ -33,6 +33,18 @@ Since you cannot use `diff --cached` anymore, you can do:
 
 `git diff HEAD^ HEAD` or `git show`
 
+## A branch name has been changed in upstream. Change it locally too:
+
+`git branch -m old_branch new_branch`
+
+`git fetch origin` or `git remote -v update`
+
+`git branch -u origin/new_branch new_branch`
+
+`git remote set-head origin -a`
+
+`git fetch --prune`
+
 ## Advanced stuff
 
 ### Detach the HEAD and traverse history
