@@ -41,9 +41,11 @@ Since you cannot use `diff --cached` anymore, you can do:
 
 `git checkout master^^^^` go back four commits
 
-#### Erase history and restart from this commit:
+### Erase recent history and restart from a given commit:
 
-(only use this while doing tests in a private repository)
+**(only use this while doing tests in a private repository)**
+
+Move the _HEAD_ as shown above. Then push:
 
 `git push -f origin HEAD:master`
 
@@ -55,4 +57,45 @@ Enjoy the now clean history:
 
 `git log`
 
+### Delete the commit history and force push with a fake date
+
+**(only use this while doing tests in a private repository)**
+
+Create an orphan branch (without a commit history):
+
+`git checkout --orphan temp_branch`
+
+If you do e.g. `git branch -a` you won't see it, it's normal.
+
+Add all files:
+
+`git add -A`
+
+Commit the changes with a fake date (*GIT\_AUTHOR\_DATE* only):
+
+`git commit --date "2020-01-01T16:00:00 +0100" -m "Initial commit"`
+
+Change *GIT\_COMMITTER\_DATE* too:
+
+`git filter-branch --env-filter 'export GIT_COMMITTER_DATE="$GIT_AUTHOR_DATE"'`
+
+Delete the master branch:
+
+`git branch -D master`
+
+Rename the temporary branch to master
+
+`git branch -m master`
+
+Force update to repository
+
+`git push --force origin master`
+
+Delete the local repository folder.
+
+Download the repository from scratch, to get rid of logs, old objects, etc.:
+
+`git clone https://github.com/owner/repo.git`
+
 <p align="center"><a href="readme.md">INDEX</a></p>
+
