@@ -20,6 +20,10 @@ or
 
 `git reset --soft origin/<branch>`
 
+To keep the work you've done, but unstaging the files:
+
+`git reset`
+
 To destroy the work you've done:
 
 `git reset --hard origin`
