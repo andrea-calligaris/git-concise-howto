@@ -16,21 +16,15 @@ To keep the work you've done:
 
 `git reset --soft origin`
 
-or
-
-`git reset --soft origin/<branch>`
-
 To keep the work you've done, but unstaging the files:
 
-`git reset`
+`git reset origin`
 
 To destroy the work you've done:
 
 `git reset --hard origin`
 
-or
-
-`git reset --hard origin/<branch>`
+In all these cases, you can specify the branch: instead of `origin` use `origin/<branch>`.
 
 ### I have already pushed online though!
 
