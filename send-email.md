@@ -32,9 +32,11 @@ This is useful if you are sending the patch to a mailing list and are therefore 
 
 Clone the repo, edit and commit normally. Then, instead of pushing, send the patch via email:
 
-`git send-email --to project@project.org -1`
+`git send-email --dry-run --to project@project.org -1`
 
 (`-1` is "all the changes up to the last commit")
+
+Once the email is sent, there's no going back, so using `--dry-run` is recommended. Check that everything is correct, especially that no unwanted _Cc:_ are being added by _Git_. If everything looks fine, run the command again without `--dry-run` to actually send the mail.
 
 <p align="center"><a href="readme.md">INDEX</a></p>
 
